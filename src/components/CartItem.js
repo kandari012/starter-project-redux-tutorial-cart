@@ -1,8 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { DECREASE, INCREASE, REMOVE } from "../action";
+import { useSelector, useDispatch } from "react-redux";
 
 const CartItem = ({ img, title, price, amount, remove }) => {
+  const counter = useSelector((state) => state.cart);
+  console.log("counter---", counter);
+  const dispatch = useDispatch();
   return (
     <div className="cart-item">
       <img src={img} alt={title} />
@@ -12,8 +16,11 @@ const CartItem = ({ img, title, price, amount, remove }) => {
         {/* remove button */}
         <button
           className="remove-btn"
+          // onClick={() => {
+          //   remove();
+          // }}
           onClick={() => {
-            remove();
+            dispatch({ type: REMOVE });
           }}
         >
           remove
