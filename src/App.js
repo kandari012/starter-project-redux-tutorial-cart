@@ -7,28 +7,16 @@ import cartItems from "./cart-items";
 // redux stuff
 
 import { createStore } from "redux";
+import reducer from "./reducer";
+import { DECREASE, INCREASE } from "./action";
 
 const initialState = {
-  count: 0,
+  cart: cartItems,
+  total: 0,
+  amount: 0,
 };
 
-const reducer = (state, action) => {
-  if (action.type === "DECREASE") {
-    return { ...state, count: state.count - 1 };
-  }
-  if (action.type === "INCREASE") {
-    return { ...state, count: state.count + 1 };
-  }
-  if (action.type === "RESET") {
-    return { ...state, count: 0 };
-  }
-  return state;
-};
 const store = createStore(reducer, initialState);
-store.dispatch({ type: "DECREASE" });
-store.dispatch({ type: "INCREASE" });
-store.dispatch({ type: "RESET" });
-console.log(store.getState());
 
 function App() {
   // cart setup
