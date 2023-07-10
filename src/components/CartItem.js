@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { DECREASE, INCREASE, REMOVE } from "../action";
+import { DECREASE, INCREASE, REMOVE, removeItem } from "../action";
 import { useSelector, useDispatch } from "react-redux";
 
 const CartItem = ({ img, title, price, amount, remove }) => {
@@ -20,7 +20,7 @@ const CartItem = ({ img, title, price, amount, remove }) => {
           //   remove();
           // }}
           onClick={() => {
-            dispatch({ type: REMOVE });
+            dispatch(removeItem(5));
           }}
         >
           remove
