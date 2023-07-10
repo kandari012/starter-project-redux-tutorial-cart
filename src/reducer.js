@@ -1,6 +1,13 @@
 import { DECREASE, INCREASE, CLEAR_CART, REMOVE } from "./action";
+import cartItems from "./cart-items";
 
-const reducer = (state, action) => {
+const initialState = {
+  cart: cartItems,
+  total: 200,
+  amount: 66,
+};
+
+const reducer = (state = initialState, action) => {
   if (action.type === CLEAR_CART) {
     return { ...state, cart: [] };
   }
